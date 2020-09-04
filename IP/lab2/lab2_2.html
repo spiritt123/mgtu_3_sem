@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab2</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        .schedule{
+            width: 900px;
+        }
+        .col{
+            float: left;
+        }
+        .day{
+            width: 10%;
+        }
+        .time{
+            width: 20%;
+        }
+        .rcol{
+            width: 70%;
+        }
+        .cell{
+            height: 40px;
+            text-align: center;
+            border: 1px solid;
+        }
+        .parity{
+            float: left;
+            width: 49%;
+        }
+        .dont-parity{
+            float: left;
+            width: 98%;
+            padding-right: 2px;
+        }
+        .cell7top
+        {
+            height: 292px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="schedule">
+        <div class="col day">
+            <div class="cell"> Пн </div>
+            <div class="cell cell7top">
+            </div>
+        </div>
+        <div class="col time">
+            <div class="cell">Время</div>
+            <div class="line">
+                <div class="cell">08:30 - 10:05</div>
+            </div>
+            <div class="line">
+                <div class="cell">10:15 - 11:50</div>
+            </div>
+            <div class="line">
+                <div class="cell">12:20 - 13:50</div>
+            </div>
+            <div class="line">
+                <div class="cell">13:50 - 15:25</div>
+            </div>
+            <div class="line">
+                <div class="cell">15:40 - 17:15</div>
+            </div>
+            <div class="line">
+                <div class="cell">17:25 - 19:00</div>
+            </div>
+            <div class="line">
+                <div class="cell">19:10 - 20:45</div>
+            </div>
+        </div>
+        <div class="col rcol">
+            <div class="cell parity">чс</div>
+            <div class="cell parity">зн</div>
+            <div class="line">
+                <div class="cell parity"></div>
+                <div class="cell parity"></div>
+            </div>
+            <div class="line">
+                <div class="cell parity"></div>
+                <div class="cell parity"></div>
+            </div>
+            <div class="line">
+                <div class="cell dont-parity">Элективный курс по физической культуре</div>
+            </div>
+            <div class="line">
+                <div class="cell parity"></div>
+                <div class="cell parity">Базы данных</div>
+            </div>
+            <div class="line">
+                <div class="cell dont-parity">Физика</div>
+            </div>
+            <div class="line">
+                <div class="cell dont-parity">Базы данных</div>
+            </div>
+            <div class="line">
+                <div class="cell parity"></div>
+                <div class="cell parity"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+

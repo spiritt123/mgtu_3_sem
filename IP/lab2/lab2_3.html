@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>    
+    <meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>ICS6 Bootstrap</title>    
+    <link href="bootstrap.min.css" rel="stylesheet">    
+    <style>        
+    html {            
+        position: relative;            
+        min-height: 100%;        
+    }        
+    body {            
+        margin-bottom: 40px;        
+    }        
+    main {            
+        margin-top: 15px;        
+    }        
+    footer {            
+        height: 40px;            
+        position: absolute;            
+        bottom: 0;            
+        width: 100%;        
+    }        
+    .my-primary {            
+        background-color: #1A237E;            
+        color: white;        
+    } 
+    table {
+        width: auto;
+    }
+    td{
+        text-align: center;
+        border: 1px solid;
+    }
+    .top{
+        width: 30%;
+    }
+    th{
+        border: 1px solid;
+    }  
+    .table{
+        width: 800px;
+    } 
+    </style>
+</head>
+<body>    
+    <header>      
+        <nav class="navbar navbar-expand-lg navbar-dark my-primary">        
+            <a class="navbar-brand" href="#">Navbar</a>            
+            <ul class="navbar-nav mr-auto">                
+                <li class="nav-item active">                    
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span>                
+                    </a>            
+                </li>            
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>            
+                </li>        
+            </ul>    
+        </nav>    
+    </header>    
+    <main class="container">        
+        <div class="row">            
+            <div class="col-4">            
+                <img src=" http://e-learning.bmstu.ru/moodle/pluginfile.php/7546/mod_folder/content/0/avatar.jpg" alt="avatar" width="150" height="150">            
+            </div>            
+            <div class="col-8">                
+                <p>Ну привет)))</p>            
+            </div>        
+        </div>        
+        <div class="row">
+            <div class="col-4">
+                <form>
+                    <fieldset disabled>
+                        <div class="form-group">
+                            <label for="disabledTextInput">Имя: </label>
+                            <input type="text" id="disabledTextInput" class="form-control" name="fname">
+                        </div>
+                        <div class="form-group">
+                            <label for="disabledSelect">Фамилия: </label>
+                            <input id="disabledSelect" class="form-control" name="lname">
+
+                        </div>
+                        <div class="form-check">
+                            <p>Пол: 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="м" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        м
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="ж" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        ж
+                                    </label>
+                                </div>
+                            </p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
+                </form>        
+            </div>            
+            <div class="col-4">                
+                <table class="table">   
+                    <tr>     
+                        <th>Пн</th>     
+                        <th>Время</th>
+                        <th>чс</th>   
+                        <th>зн</th>   
+                    </tr>   
+                    <tr>   
+                        <td rowspan = "7"></td> 
+                        <td>08:30 - 10:05</td>     
+                        <td class = "top"></td>     
+                        <td class = "top"></td>   
+                    </tr>   
+                    <tr>    
+                        <td>10:15 - 11:50</td>     
+                        <td></td>     
+                        <td></td>   
+                    </tr>   
+                    <tr>    
+                        <td>12:20 - 13:50</td>     
+                        <td colspan = "2"> Элективный курс по физической культуре</td> 
+                    </tr>   
+                    <tr>    
+                        <td>13:50 - 15:25</td>     
+                        <td></td>     
+                        <td>Базы данных</td>   
+                    </tr>   
+                    <tr>    
+                        <td>15:40 - 17:15</td>     
+                        <td colspan = "2"> Физика</td>
+                    </tr>   
+                    <tr>    
+                        <td>17:25 - 19:00</td>   
+                        <td colspan = "2"> Базы данных</td>
+                    </tr>   
+                    <tr>    
+                        <td>19:10 - 20:45</td>     
+                        <td></td>     
+                        <td></td>   
+                    </tr>   
+                </table>
+            </div>        
+        </div>        
+        <div class="row">
+            <div class="col">                
+                Здорова!!!
+            </div>
+        </div>          
+    </main>    
+    <footer class="my-primary">        
+        <div class="container">            
+            <p class="footer-text">Footer</p>
+        </div>    
+    </footer>
+</body>
+</html>
