@@ -1,0 +1,49 @@
+
+<!DOCTYPEhtml>
+<html>
+<head>
+    <title>Лаба 3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script>
+        function getChild (target, perent, level)
+        {
+            var line = '';
+            for (var i = 0; i < level; i++) {
+                line += '\u00a0';
+            }
+            source = line + perent.localName;
+            if (perent.id) source += " #" + perent.id; 
+            if (perent.classList.length != 0) source += " .(" + perent.classList + ")"; 
+            console.log(source);
+            target.innerText += source + '\n';
+            for(var x = perent.firstElementChild; 
+                x != null; 
+                x = x.nextElementSibling)
+            {
+                getChild(target, x, level + 1);
+            }
+        }
+        function my_print(target) 
+        {
+            var e = document.body.children;
+            
+            for(var i = 0; i < e.length; ++i)
+            {
+                getChild(target, e[i], 0);
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+    <div class="dd ls">
+        <a href="https://yandex.ru/">
+            <img width="100" height="111" src="https://avatars.mds.yandex.net/get-pdb/27625/3c6112d0-93a1-4e06-b6ba-c3ba509984b7/s1200">
+        </a>
+    </div>
+    <button onclick="output.innerText=''; my_print(output)">вывести</button>
+</body>
+</html>
+
+
