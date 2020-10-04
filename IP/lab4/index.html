@@ -4,24 +4,157 @@
 <head>
     <title>Лаба 4</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script>
-        
-    </script>
+    <style type="text/css">
+        table {
+            border: solid;
+        }
+        td{
+            border: 1px solid;
+            width: 400px;
+        }
+        #input {
+            float: left;
+        }
+        #output {
+            float: right;
+            margin-bottom: 100vh;
+        }
+        .table {
+            height: 5em;
+        }
+        .button {
+            width: 50px;
+        }
+        .col3{
+            width: 50px;
+        }
+        p{
+            float: left;
+            text-align: center;
+            width: 50%;
+        }
+    </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <th>Наименование</th>
-            <th>Цена</th>
-        </thead>
-        <tbody>
+    <p>Прайс лист</p><p>Корзина</p>
+    <div class="table">
+        
+        <table id="input">
+            <tr>
+                <td>Наименование</td>
+                <td>Цена</td>
+                <td class="col3">+</td>
+            </tr>
+        </table> 
+    
+    
+        <table id="output">
+            <tr>
+                <td>Наименование</td>
+                <td>Цена</td>
+                <td class="col3">∀</td>
+            </tr>
+        </table>
+    </div>
+    <input type="text" id="name" name="name">
+    <input type="num" id="price" name="price">
+    <button onclick="addFromForm('input')">добавить</button>
+    <button onclick="sum('output')">расчитать</button>
+    <script>
+        function sum(target_table)
+        {
+            var target = document.getElementById(target_table);
+            let summa = 0;
+            for (let i = 2; i <= target.childElementCount; i++) {
+                summa += Number(target.childNodes[i].children[1].firstChild.textContent) * 
+                         Number(target.childNodes[i].children[2].firstChild.textContent);
+            }
+            alert(summa);
+        }
+
+
+        function foo(id)
+        {
+            var table_o = document.getElementById('output');
+            var table_i = document.getElementById('input');
+            var name    = table_i.childNodes[Number(id.substr(6)) + 1].children[0].firstChild.textContent;
+            var price   = table_i.childNodes[Number(id.substr(6)) + 1].children[1].firstChild.textContent;
+            var value   = 1;
+            var l = 2;
+            if (l = isMatch(table_o, name, price)) 
+            {
+                var n = table_o.childNodes[l].children[2].firstChild;
+                n.textContent = Number(n.textContent) + 1;
+            }
+            else
+            {
+                add(table_o, name, price, value);
+            }
+        }
+
+        function add(table, name, price, value) {
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+                td.appendChild(document.createTextNode(name));
+                tr.appendChild(td);
             
-        </tbody>
-    </table>
-    <input type="text" name="name">
-    <input type="num" name="cost">
-    <button onclick="add()">добавить</button>
-    <button onclick="sum()">расчитать</button>
+            var td2 = document.createElement('td');
+                td2.appendChild(document.createTextNode(price));
+                tr.appendChild(td2);
+            
+            var td3 = document.createElement('td');
+                td3.appendChild(document.createTextNode(value));
+                td3.setAttribute("class", "col3");
+                tr.appendChild(td3);
+            
+            table.appendChild(tr);
+        }
+
+        function isMatch(target, name, price)
+        {
+            for (let i = 2; i <= target.childElementCount; i++) {
+                if ((target.childNodes[i].children[0].firstChild.textContent == name)
+                    && 
+                    (target.childNodes[i].children[1].firstChild.textContent == price))
+                {
+                    return i;
+                }
+            }
+            return false;
+        }
+
+        function addFromForm(target_table) {
+            var name = document.getElementById('name').value;
+            var price = document.getElementById('price').value;
+            if (!name || !price) return;
+            if (!Number(price)) return;
+            var table = document.getElementById(target_table);
+            if (isMatch(table, name, price) != false) return;
+
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+                td.appendChild(document.createTextNode(name));
+                tr.appendChild(td);
+            
+            var td2 = document.createElement('td');
+                td2.appendChild(document.createTextNode(price));
+                tr.appendChild(td2);
+            
+            var td3 = document.createElement('td');
+                td3.setAttribute("class", "button");
+            
+            var name_button = 'button' + table.children.length;
+            var button = document.createElement('input');
+                button.setAttribute("type", "button");
+                button.setAttribute("id", name_button);
+                button.setAttribute("onclick", "foo(this.id)");
+                button.appendChild(document.createTextNode('+'));
+            
+            td3.appendChild(button);
+            tr.appendChild(td3);
+            table.appendChild(tr);
+        }
+    </script>
 </body>
 </html>
 
