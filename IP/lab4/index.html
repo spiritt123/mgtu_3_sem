@@ -56,8 +56,8 @@
             </tr>
         </table>
     </div>
-    <input type="text" id="name" name="name">
-    <input type="num" id="price" name="price">
+    <input type="text" id="name" value ="name" name="name">
+    <input type="num" id="price" value ="value" name="price">
     <button onclick="addFromForm('input')">добавить</button>
     <button onclick="sum('output')">расчитать</button>
     <script>
@@ -148,7 +148,7 @@
                 button.setAttribute("type", "button");
                 button.setAttribute("id", name_button);
                 button.setAttribute("onclick", "foo(this.id)");
-                button.appendChild(document.createTextNode('+'));
+                button.setAttribute("value", "+");
             
             td3.appendChild(button);
             tr.appendChild(td3);

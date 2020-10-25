@@ -1,15 +1,9 @@
+# frozen_string_literal: true
 
+def my_fun(value)
+  return -Float::INFINITY if value.zero?
+  return Float::INFINITY if value == 2
+  return Float::NAN if ((value * value) / (value - 2)).negative?
 
-def my_fun(x)
-  if (x == 0) 
-    return -Float::INFINITY
-  end
-  if (x == 2)
-    return Float::INFINITY
-  end
-  if ((x * x)/(x - 2) < 0)
-    return Float::NAN
-  end
-  (Math.log10((x * x)/(x - 2))) * Math.exp(x);
+  Math.log10((value * value) / (value - 2)) * Math.exp(value)
 end
-
