@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Медведев Александр Евгеньевич ИУ6-32Б</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+    <p>Медведев Александр Евгеньевич ИУ6-32Б Билет № 6</p>
+    <p>Задание. Дан массив чисел arr_l. Определить среднее арифметическое значение положительных элементов массива и поместить его на место среднего элемента массива.</p>
+    <input type="text" id="array" name="array">
+    <button onclick="foo('array')">расчитать</button>
+    <div id="input">input : </div>
+    <div id="output">output : </div>
+    <script>
+
+        window.onload = function() 
+        {
+            let ix = document.getElementById('array').value = "1 3 4 -7 4";
+        };
+
+        function foo(array)
+        {
+            let input = document.getElementById('input');
+            let output = document.getElementById('output');
+            array = document.getElementById('array').value.split(' ');
+            input.innerHTML = ("input : " + array);
+
+            for (var i = 0; i < array.length; i++) 
+            {
+                if (isNaN(array[i])) 
+                {
+                    output.innerHTML = ("output : Не массив чисел");
+                    return;
+                }
+                array[i] = Number(array[i]);
+            }
+            sred(array);
+        }
+
+        function sred(array)
+        {
+            let input = document.getElementById('input');
+            let output = document.getElementById('output');
+            input.innerHTML = ("input : " + array);
+            let sum = 0;
+            let count = 0;
+            for (var i = 0; i < array.length; i++) 
+            {
+                if (Number(array[i]) > 0) 
+                {
+                    sum += Number(array[i]);
+                    count++;
+                }
+                if (isNaN(array[i])) 
+                {
+                    output.innerHTML = ("output : Не массив чисел");
+                    return;
+                }
+            }
+            array[parseInt(array.length / 2)] = (sum / count);
+            console.log(array);
+            if(isNaN(array[0])) 
+            {
+                output.innerHTML = ("output : Не массив чисел");
+                return;
+            }
+            output.innerHTML = ("output : " + array);
+        }
+
+        
+    </script>
+</body>
+</html>
+
+
