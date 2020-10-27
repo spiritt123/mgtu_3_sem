@@ -6,19 +6,19 @@ require_relative 'main'
 
 # tests file
 class TestPart1 < Minitest::Test
-  def test_null_file
-    !UpdateFile.update('sfsfsd').zero?
+  def test_line_true
+    Line.new(1, 1, 2, 2).target3?(0, 0)
   end
 
-  def test_1
-    UpdateFile.update('file1.txt').zero?
+  def test_line_false
+    !Line.new(1, 1, 2, 2).target3?(3, 0)
   end
-
-  def test_2
-    UpdateFile.update('file2.txt').zero?
+  
+  def test_thich_line_false
+    !ThichLine.new(1, 1, 2, 2, 1).target3?(5, 2)
   end
-
-  def test_3
-    UpdateFile.update('file3.txt').zero?
+  
+  def test_thich_line_true
+    ThichLine.new(1, 1, 2, 2, 1).target3?(1, 2)
   end
 end
