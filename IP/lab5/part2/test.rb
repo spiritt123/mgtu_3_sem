@@ -12,16 +12,18 @@ class TestPart1 < Minitest::Test
   def gen_2_new_str(first, second)
     (1..(Random.rand(5) + 1)).each do
       if Random.rand(1) == 1
-        word = gen_new_word(Random.rand(7))
         first << 'n'
         second << 't'
       end
+      word = gen_new_word(Random.rand(1..7))
       first << word
       second << word
       if Random.rand(1) == 1
         first << 'o'
         second << 'e'
       end
+      first << ' '
+      second << ' ' 
     end
     first
   end
@@ -29,7 +31,6 @@ class TestPart1 < Minitest::Test
   def test_first_arg
     first = "a"
     second = "a"
-    
-    assert_equal gen_2_new_str(first,second) , second
+    assert_equal gen_2_new_str(first,second), second
   end
 end
