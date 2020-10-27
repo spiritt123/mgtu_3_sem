@@ -3,11 +3,11 @@
 # class line
 class Line
   attr_accessor :x1, :y1, :x2, :y2
-  def initialize(x1, y1, x2, y2)
-    @x1 = x1;
-    @y1 = y1;
-    @x2 = x2;
-    @y2 = y2;
+  def initialize(coord_x1, coord_y1, coord_x2, coord_y2)
+    @x1 = coord_x1
+    @y1 = coord_y1
+    @x2 = coord_x2
+    @y2 = coord_y2
   end
 
   def print
@@ -15,22 +15,23 @@ class Line
     p "#{@x2} : #{@y2}"
   end
 
-  def target3?(x3, y3)
-    ((x3 - @x1) / (@x2 - @x1) - (y3 - @y1) / (@y2 - @y1)).abs < 10e-4
+  def target3?(coord_x3, coord_y3)
+    ((coord_x3 - @x1) / (@x2 - @x1) - (coord_y3 - @y1) / (@y2 - @y1)).abs < 10e-4
   end
 end
 
+# class line with thich
 class ThichLine < Line
   attr_accessor :thich
 
-  def initialize(x1, y1, x2, y2, thich)
-    super(x1, y1, x2, y2)
+  def initialize(coord_x1, coord_y1, coord_x2, coord_y2, thich)
+    super(coord_x1, coord_y1, coord_x2, coord_y2)
     @thich = thich
   end
 
-  def target3?(x3, y3)
-    dx = (-x3 + @x1 + (@x2 - @x1) * (y3 - @y1) / (@y2 - @y1)).abs
-    dy = ((x3 - @x1) * (@y2 - @y1) / (@x2 - @x1) + @y1 - y3).abs
+  def target3?(coord_x3, coord_y3)
+    dx = (-coord_x3 + @x1 + (@x2 - @x1) * (coord_y3 - @y1) / (@y2 - @y1)).abs
+    dy = ((coord_x3 - @x1) * (@y2 - @y1) / (@x2 - @x1) + @y1 - coord_y3).abs
     (dx * dy) / Math.sqrt(dx * dx + dy * dy) <= thich
   end
 end

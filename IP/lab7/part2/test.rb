@@ -13,11 +13,11 @@ class TestPart1 < Minitest::Test
   def test_line_false
     !Line.new(1, 1, 2, 2).target3?(3, 0)
   end
-  
+
   def test_thich_line_false
-    !ThichLine.new(1, 1, 2, 2, 1).target3?(5, 2)
+    !ThichLine.new(1, 1, 2, 2, 1).target3t?(5, 2)
   end
-  
+
   def test_thich_line_true
     ThichLine.new(1, 1, 2, 2, 1).target3?(1, 2)
   end
