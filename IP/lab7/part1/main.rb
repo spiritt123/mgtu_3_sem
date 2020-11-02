@@ -5,7 +5,7 @@ module UpdateFile
   def self.update(path)
     return 1 unless File.exist?(path)
 
-    File.open("n_#{path}", 'a') do |f|
+    File.open("n_#{path}", 'w') do |f|
       IO.foreach(path) do |line|
         f.write(" #{line}")
       end

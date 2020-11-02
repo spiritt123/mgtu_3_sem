@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'minitest/autorun'
 require 'minitest/assertions'
@@ -10,19 +10,23 @@ class TestPart1 < Minitest::Test
     (0..size).map { ('a'..'z').to_a[Random.rand(26)] }.join
   end
 
+  def add_first_char(first, second)
+    first << 'n'
+    second << 't'
+  end
+
+  def add_last_char(first, second)
+    first << 'o'
+    second << 'e'
+  end
+
   def gen_2_new_str(first, second)
     (1..Random.rand(1..8)).each do
-      if Random.rand(1) == 1
-        first << 'n'
-        second << 't'
-      end
+      add_first_char(first, second) if Random.rand(1) == 1
       word = gen_new_word(Random.rand(1..7))
       first << word
       second << word
-      if Random.rand(1) == 1
-        first << 'o'
-        second << 'e'
-      end
+      add_last_char(first, second) if Random.rand(1) == 1
       first << ' '
       second << ' '
     end

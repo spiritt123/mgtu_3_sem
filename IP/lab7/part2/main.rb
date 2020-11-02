@@ -29,9 +29,15 @@ class ThichLine < Line
     @thich = thich
   end
 
+  def get_dx(coord_x3, coord_y3)
+    (-coord_x3 + @x1 + (@x2 - @x1) * (coord_y3 - @y1) / (@y2 - @y1)).abs
+  end
+
+  def get_dy(coord_x3, coord_y3)
+    ((coord_x3 - @x1) * (@y2 - @y1) / (@x2 - @x1) + @y1 - coord_y3).abs
+  end
+
   def target3?(coord_x3, coord_y3)
-    dx = (-coord_x3 + @x1 + (@x2 - @x1) * (coord_y3 - @y1) / (@y2 - @y1)).abs
-    dy = ((coord_x3 - @x1) * (@y2 - @y1) / (@x2 - @x1) + @y1 - coord_y3).abs
-    (dx * dy) / Math.sqrt(dx * dx + dy * dy) <= thich
+    (get_dx(coord_x3, coord_y3) * get_dy(coord_x3, coord_y3)) / Math.sqrt(dx * dx + dy * dy) <= @thich
   end
 end
