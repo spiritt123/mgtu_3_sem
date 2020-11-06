@@ -17,7 +17,7 @@ class TestPart1 < Minitest::Test
   def test_infinite_2
     assert (-my_fun(0)).infinite?, true
   end
-  
+
   def test_nan_1
     assert my_fun(1).nan?, true
   end
