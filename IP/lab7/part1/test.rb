@@ -12,7 +12,7 @@ class TestPart1 < Minitest::Test
 
   def test_1
     result = UpdateFile.update('file1.txt').zero?
-    # File.delete('n_file1.txt')
+    File.delete('n_file1.txt')
     assert true, result
   end
 

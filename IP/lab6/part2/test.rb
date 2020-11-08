@@ -6,7 +6,7 @@ require_relative 'main'
 
 # tests
 class TestPart1 < Minitest::Test
-    def test_e_3
+  def test_e_3
     assert_equal 1, integr(10e-3)
   end
 
