@@ -1,0 +1,8 @@
+<h1>Numbers#input</h1>
+<p>Find me in app/views/numbers/input.html.erb</p>
+<%= form_tag("/numbers/view", :method => "get") do %>
+  <%= label_tag("search perfect number:") %>
+  <%= text_field_tag(:arr) %>
+  <br/><br/>
+  <%= submit_tag("Get result") %>
+<% end %>

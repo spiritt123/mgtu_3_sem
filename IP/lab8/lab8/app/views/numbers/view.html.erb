@@ -1,0 +1,15 @@
+<h1>Numbers#view</h1>
+<p>Find me in app/views/numbers/view.html.erb</p>
+<table>
+  <p id = "result">
+    
+    <% @result.each do |x| %>
+        <p><%= x %></p>
+    <% end %>
+    
+    <p>Max length <%=value = @result.map { |x| x.size }.max %></p>
+    <p>Array with max length <%= @result.find { |x| x.size == value } %> </p>
+  </p>
+
+</table>
+
