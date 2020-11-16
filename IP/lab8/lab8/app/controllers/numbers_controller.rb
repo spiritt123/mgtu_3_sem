@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
+# class controller
 class NumbersController < ApplicationController
-  def input
-  end
+  def inpup; end
 
   def view
     str = params[:arr]
-    if str == "" || str.nil?
-      @result = 'input nil' 
+    if str == '' || str.nil?
+      @result = 'input nil'
     elsif !str.nil? && str.scan(/[^\D]/).empty?
       @result = "don\'t numbers"
     else
@@ -13,30 +15,28 @@ class NumbersController < ApplicationController
     end
   end
 end
-    
-def is_number? string
-  true if Float(string) rescue false
-end
 
-def perfect_number?(x)
-  s = (1..(x / 2)).map do |a| 
-    if (x % a) == 0 
-      a
-    end
-  end
-  x == s.compact.inject(:+)  
+def perfect_number?(num)
+  s = (1..(num / 2)).select { |a| (num % a).zero? }
+  num == s.compact.inject(:+)
 end
 
 def get_perfect_numbers(arr)
   out = []
-  arr2 = arr
-  while arr2.any?
-    out.append(arr2.take_while { |z| perfect_number?(z) })
-    arr2 = arr2.drop_while { |y| perfect_number?(y) }.drop_while { |y| !perfect_number?(y) }
+  inp = []
+  arr = arr.drop_while { |y| !perfect_number?(y) }
+  arr.each do |x|
+    if !perfect_number?(x)
+      out.append(inp)
+      inp = []
+    else
+      inp.append(x)
+    end
   end
+  out.append(inp) if inp.size.positive?
   out
 end
 
 def convert_input_to_numbers(line)
-  line.strip.split.map { |x| x.to_i }
+  line.strip.split.map(&:to_i)
 end
