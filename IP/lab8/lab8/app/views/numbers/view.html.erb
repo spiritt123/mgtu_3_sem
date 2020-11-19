@@ -5,10 +5,16 @@
     <% if @result.instance_of? String%> 
       <%= @result%>
     <%else%>
+      <tr>
+        <td style="border: 1px solid grey;">array</td>
+        <td style="border: 1px solid grey;">length</td>
+      </tr>
       <% @result.each do |x| %>
-        <p><%= x %></p>
+        <tr>
+          <td style="border: 1px solid grey;"><%= x %></td>
+          <td style="border: 1px solid grey;"><%= x.size %></td>
+        </tr>
       <% end %>
-    
     <p>Max length <%=value = @result.map { |x| x.size }.max %></p>
     <p>Array with max length <%= @result.find { |x| x.size == value } %> </p>
     <% end %>

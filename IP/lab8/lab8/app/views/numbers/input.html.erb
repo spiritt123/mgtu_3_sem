@@ -2,7 +2,7 @@
 <p>Find me in app/views/numbers/input.html.erb</p>
 <%= form_tag("/numbers/view", :method => "get") do %>
   <%= label_tag("search perfect number:") %>
-  <%= text_field_tag(:arr) %>
+  <%= text_field_tag(:arr, value = "6 28 3 28") %>
   <br/><br/>
   <%= submit_tag("Get result") %>
 <% end %>

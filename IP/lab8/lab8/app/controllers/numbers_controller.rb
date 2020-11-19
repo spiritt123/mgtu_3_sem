@@ -8,7 +8,7 @@ class NumbersController < ApplicationController
     str = params[:arr]
     if str == '' || str.nil?
       @result = 'input nil'
-    elsif !str.nil? && str.scan(/[^\D]/).empty?
+    elsif !str.nil? && str.strip.split.map(&:to_i).join(' ') != str.strip
       @result = "don\'t numbers"
     else
       @result = get_perfect_numbers(convert_input_to_numbers(str))
@@ -27,8 +27,8 @@ def get_perfect_numbers(arr)
   arr = arr.drop_while { |y| !perfect_number?(y) }
   arr.each do |x|
     if !perfect_number?(x)
-      out.append(inp)
-      inp = []
+      out.append(inp) if inp.any?
+      inp = Array.new
     else
       inp.append(x)
     end
@@ -38,5 +38,5 @@ def get_perfect_numbers(arr)
 end
 
 def convert_input_to_numbers(line)
-  line.strip.split.map(&:to_i)
+  line.split.map(&:to_i)
 end
