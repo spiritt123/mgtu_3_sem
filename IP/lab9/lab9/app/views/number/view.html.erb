@@ -1,0 +1,17 @@
+<h1>Number#view</h1>
+<table>
+  <p id = "result">
+    <% if @result.instance_of? string%> 
+      <%= @result%>
+    <%else%>
+      <% @result.each do |x| %>
+        <p><%= x %></p>
+      <% end %>
+    
+    <p>max length <%=value = @result.map { |x| x.size }.max %></p>
+    <p>array with max length <%= @result.find { |x| x.size == value } %> </p>
+    <% end %>
+  </p>
+
+</table>
+<p>Find me in app/views/number/view.html.erb</p>

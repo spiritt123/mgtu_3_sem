@@ -1,0 +1,173 @@
+{
+  "id": "b96eb35e-e706-4de2-805e-dfb419c8052d",
+  "version": "2.0",
+  "name": "Te",
+  "url": "http://127.0.0.1:3000/number/input",
+  "tests": [{
+    "id": "94954a23-90f8-4463-a2b8-e32be37d0cfd",
+    "name": "nil",
+    "commands": [{
+      "id": "3eb44525-8fd7-47a0-abd7-a120adef62cc",
+      "comment": "",
+      "command": "open",
+      "target": "/number/input",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "998e5e9a-866c-4d26-b8ec-01e9c5e5eabe",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "984x621",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6e2cc06a-5ac2-4169-95c7-1fae6993a345",
+      "comment": "",
+      "command": "click",
+      "target": "id=arr",
+      "targets": [
+        ["id=arr", "id"],
+        ["name=arr", "name"],
+        ["css=#arr", "css:finder"],
+        ["xpath=//input[@id='arr']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e238e2a-436f-4b4a-8de6-eee881a51d4e",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=arr",
+      "targets": [
+        ["id=arr", "id"],
+        ["name=arr", "name"],
+        ["css=#arr", "css:finder"],
+        ["xpath=//input[@id='arr']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "97327496-f5be-4886-944c-e7d6bcff35f1",
+    "name": "don't number",
+    "commands": [{
+      "id": "5d589e86-c843-42d2-9790-b1a914f28ecb",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:3000/number/input",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "83420d38-8637-4b6f-a99c-91681017180c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "984x621",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d7b61394-dad0-46ba-8355-caffe8619fef",
+      "comment": "",
+      "command": "click",
+      "target": "id=arr",
+      "targets": [
+        ["id=arr", "id"],
+        ["name=arr", "name"],
+        ["css=#arr", "css:finder"],
+        ["xpath=//input[@id='arr']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34e04918-d166-44d4-b9d1-c2dcc6850d6c",
+      "comment": "",
+      "command": "type",
+      "target": "id=arr",
+      "targets": [
+        ["id=arr", "id"],
+        ["name=arr", "name"],
+        ["css=#arr", "css:finder"],
+        ["xpath=//input[@id='arr']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "asfd"
+    }, {
+      "id": "051aec67-d70d-4d53-ad31-e7719dc9d54e",
+      "comment": "",
+      "command": "click",
+      "target": "name=commit",
+      "targets": [
+        ["name=commit", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='commit']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "1a31fb6e-202d-4e39-af71-0da8b92ef03a",
+    "name": "number 6 28 1 6 1",
+    "commands": [{
+      "id": "baf8bb82-eb71-4343-b931-cb4eff7b8a00",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:3000/number/input",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "85bf03a4-665d-4ca8-b5b6-d1f689a4b69b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "984x621",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ba8bca6d-929a-4269-b63c-b1ba92676e1e",
+      "comment": "",
+      "command": "click",
+      "target": "id=arr",
+      "targets": [
+        ["id=arr", "id"],
+        ["name=arr", "name"],
+        ["css=#arr", "css:finder"],
+        ["xpath=//input[@id='arr']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "af626a88-c750-400d-8c9e-4409dfa23f06",
+      "comment": "",
+      "command": "type",
+      "target": "id=arr",
+      "targets": [
+        ["id=arr", "id"],
+        ["name=arr", "name"],
+        ["css=#arr", "css:finder"],
+        ["xpath=//input[@id='arr']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "6 28 1 6 1"
+    }, {
+      "id": "3f8fdc21-e896-45d5-8233-a6b762a1c539",
+      "comment": "",
+      "command": "click",
+      "target": "name=commit",
+      "targets": [
+        ["name=commit", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='commit']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e95205d2-8ffd-47fd-a2ef-626347a82843",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["94954a23-90f8-4463-a2b8-e32be37d0cfd"]
+  }],
+  "urls": ["http://127.0.0.1:3000/", "http://127.0.0.1:3000/number/input"],
+  "plugins": []
+}
