@@ -28,7 +28,7 @@
       result.innerHTML = "";
       if (data.type != "Array")
       {
-          result.innerHTML = "<hr/>Result is: " + data.value + "<hr/><p>"+Date()+"</p>";
+          result.innerHTML = "<hr/>Result is: " + data.value + "<hr/>";
       } 
       else
       {
@@ -44,7 +44,6 @@
           }
           result.innerHTML += "<hr>max length:" + length + "</hr>";
           result.innerHTML += "<hr>Array with max length:" + data.value[ii] + "</hr>";
-          result.innerHTML += "<p>"+Date()+"</p>";
       }
     }    
     </script> 

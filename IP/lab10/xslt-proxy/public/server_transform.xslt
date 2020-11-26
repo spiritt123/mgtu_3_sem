@@ -6,7 +6,7 @@
   <xsl:template match="/">
     <!--Внутри шаблона пишем наше преобразование-->
     <xsl:if test="hash">
-            <xsl:value-of select="/hash/message"></xsl:value-of>
+        <xsl:value-of select="/hash/message"></xsl:value-of>
         </xsl:if>
         <xsl:if test="objects">
 

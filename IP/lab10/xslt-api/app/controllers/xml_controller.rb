@@ -7,26 +7,28 @@ class XmlController < ApplicationController
     str = params[:arr]
     if str == '' || str.nil?
       @result = 'input nil'
-    elsif !str.nil? && str.scan(/[^\D]/).empty?
+    elsif !str.nil? && str.strip.split.map(&:to_i).join(' ') != str.strip
       @result = "don\'t numbers"
     else
       @result = get_perfect_numbers(convert_input_to_numbers(str))
     end
 
     data = if @result.instance_of? String
-             { message: "Неверные параметры запроса (arr = #{@result})" }
+             { message: "Invalid request parameters(arr = #{@result})" }
            else
              @result.map { |elem| { elem: elem} }
            end
 
     respond_to do |format|
+      format.html { render inline: data.to_s }
       format.xml { render xml: data.to_xml }
       format.rss { render xml: data.to_xml }
     end
   end
-end
 
-def perfect_number?(num)
+  private
+
+  def perfect_number?(num)
     s = (1..(num / 2)).select { |a| (num % a).zero? }
     num == s.compact.inject(:+)
   end
@@ -50,3 +52,5 @@ def perfect_number?(num)
   def convert_input_to_numbers(line)
     line.strip.split.map(&:to_i)
   end
+end
+

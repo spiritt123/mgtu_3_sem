@@ -2,21 +2,10 @@ require 'nokogiri'
 require 'open-uri'
 
 class ProxyController < ApplicationController
-  before_action :parse_params, only: :output
-  before_action :prepare_url, only: :output
-
   def input; end
 
   def output
-    api_response = open(@url)
-
-    if @side == 'server'
-      @result = xslt_transform(api_response).to_html
-    elsif @side == 'client-with-xslt'
-      render xml: insert_browser_xslt(api_response).to_xml
-    else
-      render xml: api_response
-    end
+    render result.first => result.last.html_safe
   end
 
   private
@@ -25,22 +14,38 @@ class ProxyController < ApplicationController
   XSLT_SERVER_TRANSFORM  = "#{Rails.root}/public/server_transform.xslt".freeze
   XSLT_BROWSER_TRANSFORM = '/browser_transform.xslt'.freeze
 
-  def parse_params
-    @arr = params[:arr]
-    @side = params[:side]
-  end
+  def result
+    @result ||= begin
+                  api_response = open(url)
 
-  def prepare_url
-    @url = BASE_API_URL + "&arr=#{@arr}"
+                  case side 
+                  when 'server'
+                    [:html, xslt_transform(api_response).to_html]
+                  when 'client-with-xslt'
+                    [:xml, insert_browser_xslt(api_response).to_xml]
+                  else
+                    [:xml, api_response.read]
+                  end 
+                end
+  end
+  helper_method :result
+
+  def url
+    @url ||= BASE_API_URL + "&arr=#{arr}"
   end
 
   def xslt_transform(data, transform: XSLT_SERVER_TRANSFORM)
     doc = Nokogiri::XML(data)
     xslt = Nokogiri::XSLT(File.read(transform))
-    p "ss"
-
-    p xslt.transform(doc)
     xslt.transform(doc)
+  end
+
+  def side
+    @side ||= params[:side]
+  end
+
+  def arr
+    @arr ||= params[:arr]
   end
 
   def insert_browser_xslt(data, transform: XSLT_BROWSER_TRANSFORM)

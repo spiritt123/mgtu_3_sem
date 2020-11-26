@@ -6,4 +6,4 @@ puts 'input path to file'
 
 path = gets
 
-UpdateFile.update(path)
+UpdateFile.update(path.delete("\n"))
