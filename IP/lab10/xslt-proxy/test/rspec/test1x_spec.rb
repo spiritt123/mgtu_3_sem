@@ -12,6 +12,7 @@ describe 'Test1x' do
     @driver.find_element(:id, 'arr').click
     @driver.find_element(:id, 'arr').send_keys('6 28 1 3 28')
     @driver.find_element(:name, 'commit').click
+    sleep 5
     expect(@driver.find_element(:xpath, '(//elem[@type=\'integer\'])[2]').text).to eq('28')
   end
 end

@@ -11,6 +11,7 @@ describe 'Dontnumbers' do
     @driver.find_element(:id, 'arr').send_keys('sdf')
     @driver.find_element(:id, 'arr').send_keys(:enter)
     @driver.find_element(:css, 'body').click
+    sleep 3
     expect(@driver.find_element(:css, 'body').text).to eq('Invalid request parameters(arr = don\'t numbers)')
   end
 end

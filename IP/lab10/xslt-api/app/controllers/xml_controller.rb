@@ -1,17 +1,15 @@
 # Контроллер, который делает всю работу в этом приложении
 class XmlController < ApplicationController
 
-  # before_action :parse_params, only: :index
-
   def index
     str = params[:arr]
-    if str == '' || str.nil?
-      @result = 'input nil'
-    elsif !str.nil? && str.strip.split.map(&:to_i).join(' ') != str.strip
-      @result = "don\'t numbers"
-    else
-      @result = get_perfect_numbers(convert_input_to_numbers(str))
-    end
+    @result = if str == '' || str.nil?
+                "input nil"
+              elsif !str.nil? && str.strip.split.map(&:to_i).join(' ') != str.strip
+                "don\'t numbers"
+              else
+                get_perfect_numbers(convert_input_to_numbers(str))
+              end
 
     data = if @result.instance_of? String
              { message: "Invalid request parameters(arr = #{@result})" }

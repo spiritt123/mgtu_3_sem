@@ -11,6 +11,7 @@ describe 'Nils' do
     @driver.find_element(:id, 'arr').send_keys('')
     @driver.find_element(:id, 'arr').send_keys(:enter)
     @driver.find_element(:css, 'html').click
+    sleep 1
     expect(@driver.find_element(:css, 'body').text).to eq('Invalid request parameters(arr = input nil)')
   end
 end
