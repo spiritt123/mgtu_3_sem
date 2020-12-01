@@ -9,7 +9,7 @@ RSpec.describe "Numbers", type: :request do
     end
   end
 
-  describe "GET /output" do
+  describe "POST /output" do
     it "returns http success" do
       get "/number/output"
       expect(response).to have_http_status(:success)

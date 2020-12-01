@@ -1,0 +1,7 @@
+<%= form_tag("/number/output", :method => "get") do %>
+  <%= label_tag("search perfect number:") %>
+  <%= text_field_tag(:arr, value = "6 28 3 28", required: true) %>
+  <br/><br/>
+  <%= submit_tag("Get result") %>
+<% end %>
+

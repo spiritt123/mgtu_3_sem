@@ -9,4 +9,3 @@ class NumberController < ApplicationController
   end
 end
 
-

@@ -48,3 +48,4 @@ class PerNum < ApplicationRecord
     end
   end
 end
+

@@ -1,0 +1,25 @@
+<h1>Number#output</h1>
+<p>Find me in app/views/number/output.html.erb</p>
+<table>
+  <p id = "resut">
+    <%if @result.output !~ /\d/ %>
+      <%= @result.output%>
+    <%else%>
+      <% res = JSON.parse(@result.output)%>
+      <tr>
+        <td style="border: 1px solid grey;">array</td>
+        <td style="border: 1px solid grey;">length</td>
+      </tr>
+      <% res.each do |x| %>
+        <tr>
+          <td style="border: 1px solid grey;"><%= x %></td>
+          <td style="border: 1px solid grey;"><%= x.size %></td>
+        </tr>
+      <% end %>
+    <p>Max length <%=value = res.map { |x| x.size }.max %></p>
+    <p>Array with max length <%= res.find { |x| x.size == value } %> </p>
+    <% end %>
+  </p>
+
+</table>
+

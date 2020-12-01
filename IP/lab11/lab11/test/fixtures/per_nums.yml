@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  arr: 6 28 4 6
+  output: [[6, 28], [6]]
+
+two:
+  arr: 1
+  output: [] 
