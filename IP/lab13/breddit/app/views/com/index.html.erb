@@ -1,0 +1,117 @@
+
+<head>
+  <title>Breddit</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      background-image: url(/assets/background.png);
+    }
+    a:visited {
+      color: white;
+    }
+    a:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    header{
+      padding: 18px;
+      margin-bottom: 50px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 30px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .list {
+      margin: 0 20%;
+      text-align: center; 
+    }
+    .welcom {
+      font-size: 24px;
+      color: white;
+      margin: 50px 0;
+    }
+    #title_post {
+      float: left;
+      width: 90%;
+      height: 30px; 
+      border: 0;
+    }
+    #bredpost_create_post {
+      width: 100%;
+    }
+    p {
+      font-size: 24px;
+      color: white;
+      background: rgba(255, 255, 255, 0.3);
+      text-align: left;
+      padding: 20px 0;
+    }
+    input{
+      background-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      float: right;
+      width: 10%;
+      font-size: 24px;
+    }
+    textarea {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 24px;  
+    }
+  </style>
+</head>
+
+
+<header>
+  <% if current_user %>
+    Logged in as <%= current_user.name %>
+    <%= link_to "Log Out", logout_path %>
+  <% else %>
+    <%= link_to "Sign Up", signup_path %> or 
+    <%= link_to "Log In", login_path %>
+  <% end %>
+</header>
+
+<div class="list">
+  <div class="welcom">Welcom to Breddit</div>
+
+  <div class="new_post">
+    <%= form_tag("/com/create_post", :method => "get") do %>  
+      <%= text_field_tag(:title_post, value = "", required: true, :placeholder => "title") %> 
+      <%= submit_tag("Send") %>
+      <%= text_area("bredpost", "create_post", {:controller => "com", :action => "create_post", size: "80x10", required: true, :placeholder => "Post text"}) %> 
+      <br/><br/>  
+    <% end %>
+  </div>
+
+  <div id="content">
+    <% Bredpost.all.each do |bred| %>
+      <p><%= bred.title %> <%= bred.content %> <%= bred.name %>
+      <%= button_to "Like#{Bredlike.where(:id_l => bred.id).count}", 
+          {:controller => "com", :action => "like_post", :id_like => bred.id }%>
+  
+      <%= form_tag("/com/create_comment", :method => "post") do %>  
+        <%= text_area("bredcomment", 
+                      "create_comment", 
+                      {:controller => "com", 
+                        :action => "create_comment", 
+                        size: "80x5", 
+                        required: true, 
+                        :placeholder => "Comment text" }) %>
+        <%= button_tag "Send", :value => bred.id %>
+      <% end %>
+
+      <% Bredcomment.where(:id_p => bred.id).each do |comment| %>
+        <p><%= comment.content %> <%= comment.name %>
+        <%= button_to "Like#{Bredlike.where(:id_l => comment.id_c).count}", 
+            {:controller => "com", :action => "like_post", :id_like => comment.id_c }%>
+      <% end %>
+    <% end %>
+  </div>
+</div>

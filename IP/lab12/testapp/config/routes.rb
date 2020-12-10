@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users#index'
   get 'number/view'
   resources :users
   get 'users/view'
