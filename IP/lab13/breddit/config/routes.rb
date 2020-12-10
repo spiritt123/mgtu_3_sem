@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'com#index'
   resources :users
   get 'com/index'
+  post 'com/index'
   get 'com/create_post'
   get 'com/like_post'
   post 'com/like_post'

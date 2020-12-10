@@ -1,15 +1,75 @@
-<p id="alert">
-  <%= alert %>
-</p>
-<h1>Login</h1>
-  <%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
-  </div>  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>  <div class="actions">
-    <%= submit_tag "Login" %>
+
+<head>
+  <title>Breddit</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      background-image: url(/assets/background.png);
+    }
+    #body {
+      background-color: #0023359c;
+      width: 100%;
+      height: 100vh;
+      display: grid;
+    }
+    a:visited {
+      color: white;
+    }
+    a:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    #form {
+      justify-self: center;
+      align-self: center;
+    }
+    .button_to {
+      float: right;
+      margin-top: -42px;
+      margin-right: -4px;
+      height: 40px;
+      width: 50%;
+    }
+    .actions {
+      width: 50%;
+    }
+    p {
+      font-size: 24px;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    input{
+      background-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 24px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<div id="body">
+  <div id="form">
+    <p>Login</p>
+    <%= form_tag sessions_path do |form| %>
+      <div class="field">
+        <%= text_field_tag :name, value = "", required: true, :placeholder => "name"%>
+      </div>  
+      <div class="field">
+        <%= password_field_tag :password, value = "", required: true, :placeholder => "password" %>
+      </div>  
+      <div class="actions">
+        <%= submit_tag "Login" %>
+      </div>
+    <% end %>
+  <%= button_to('Back',  com_index_path) %>
+  <p id="alert">
+    <%= alert %>
+  </p>
   </div>
-<% end %>
+</div>

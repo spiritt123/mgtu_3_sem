@@ -42,8 +42,30 @@
       height: 30px; 
       border: 0;
     }
-    #bredpost_create_post {
-      width: 100%;
+    .title {
+      text-align: center;
+    }
+    .name_post {
+      text-align: right;
+    }
+    .comment_form {
+      border-top: solid 2px;
+      margin-right: 3px;
+      margin-bottom: 30px;
+    }
+    .send_comment {
+      display: block;
+      position: absolute;
+      width: 60%;
+      height: 26px;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 20px;
+    }
+    .comment {
+      float: right;
+      width: 90%;
+      border: 1px solid white;
     }
     p {
       font-size: 24px;
@@ -63,7 +85,9 @@
       background-color: rgba(255, 255, 255, 0.3);
       color: white;
       font-size: 24px;  
+      width: 100%;
     }
+    ю
   </style>
 </head>
 
@@ -83,35 +107,43 @@
 
   <div class="new_post">
     <%= form_tag("/com/create_post", :method => "get") do %>  
-      <%= text_field_tag(:title_post, value = "", required: true, :placeholder => "title") %> 
+      <%= text_field_tag(:title_post, value = "", required: true, :placeholder => "Title") %> 
       <%= submit_tag("Send") %>
-      <%= text_area("bredpost", "create_post", {:controller => "com", :action => "create_post", size: "80x10", required: true, :placeholder => "Post text"}) %> 
+      <%= text_area("bredpost", "create_post", {:controller => "com", :action => "create_post", size: "80x7", required: true, :placeholder => "Post text"}) %> 
       <br/><br/>  
     <% end %>
   </div>
 
   <div id="content">
     <% Bredpost.all.each do |bred| %>
-      <p><%= bred.title %> <%= bred.content %> <%= bred.name %>
-      <%= button_to "Like#{Bredlike.where(:id_l => bred.id).count}", 
-          {:controller => "com", :action => "like_post", :id_like => bred.id }%>
-  
-      <%= form_tag("/com/create_comment", :method => "post") do %>  
-        <%= text_area("bredcomment", 
-                      "create_comment", 
-                      {:controller => "com", 
-                        :action => "create_comment", 
-                        size: "80x5", 
-                        required: true, 
-                        :placeholder => "Comment text" }) %>
-        <%= button_tag "Send", :value => bred.id %>
-      <% end %>
+      <% h = 3 * 60 + 30 * bred.content.size / 80 + 150 + Bredcomment.where(:id_p => bred.id).count * 120 %>
+      <div style='height:<%= "#{h}"%>px;'>
+        <%= button_to "Like #{Bredlike.where(:id_l => bred.id).count}", 
+            {:controller => "com", :action => "like_post", :id_like => bred.id }%>
+        <p class="title"><%= bred.title %> </br>
+        <p><%= bred.content %> 
+        <p class="name_post">Name: <%= bred.name %>
 
-      <% Bredcomment.where(:id_p => bred.id).each do |comment| %>
-        <p><%= comment.content %> <%= comment.name %>
-        <%= button_to "Like#{Bredlike.where(:id_l => comment.id_c).count}", 
-            {:controller => "com", :action => "like_post", :id_like => comment.id_c }%>
-      <% end %>
+        <%= form_tag("/com/create_comment", :method => "post", :class => "comment_form") do %>  
+          <%= text_area("bredcomment", 
+                        "create_comment", 
+                        {:controller => "com", 
+                          :action => "create_comment", 
+                          size: "80x3", 
+                          required: true, 
+                          :placeholder => "Comment text" }) %>
+          <%= button_tag "Send", :value => bred.id, :class => "send_comment" %>
+        <% end %>
+
+        <% Bredcomment.where(:id_p => bred.id).each do |comment| %>
+          <div class="comment">
+          <%= button_to "Like #{Bredlike.where(:id_l => comment.id_c).count}", 
+              {:controller => "com", :action => "like_post", :id_like => comment.id_c }%>
+          <p>Name: <%= comment.name %>
+          <p><%= comment.content %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
