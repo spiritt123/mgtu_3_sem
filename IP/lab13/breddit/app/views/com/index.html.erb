@@ -108,18 +108,20 @@
   <div class="new_post">
     <%= form_tag("/com/create_post", :method => "get") do %>  
       <%= text_field_tag(:title_post, value = "", required: true, :placeholder => "Title") %> 
-      <%= submit_tag("Send") %>
+      <%= submit_tag("Send", :id => "Send_new_post") %>
       <%= text_area("bredpost", "create_post", {:controller => "com", :action => "create_post", size: "80x7", required: true, :placeholder => "Post text"}) %> 
       <br/><br/>  
     <% end %>
   </div>
 
   <div id="content">
+    <% i = 0 %>
     <% Bredpost.all.each do |bred| %>
       <% h = 3 * 60 + 30 * bred.content.size / 80 + 150 + Bredcomment.where(:id_p => bred.id).count * 120 %>
-      <div style='height:<%= "#{h}"%>px;'>
+      <% i += 1 %>
+      <div style='height:<%= "#{h}"%>px;' id="block_content">
         <%= button_to "Like #{Bredlike.where(:id_l => bred.id).count}", 
-            {:controller => "com", :action => "like_post", :id_like => bred.id }%>
+            {:controller => "com", :action => "like_post", :id_like => bred.id }, :id => "#{i}"%>
         <p class="title"><%= bred.title %> </br>
         <p><%= bred.content %> 
         <p class="name_post">Name: <%= bred.name %>

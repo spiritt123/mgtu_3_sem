@@ -6,7 +6,7 @@ class Bredcomment < ApplicationRecord
   
   class << self
     def create_comment(id_p, content, name)
-      create(id_p: id_p, id_c: Time.now, content: content, name: name);
+      create(id_p: id_p, id_c: Time.now, content: content, name: name)
     end
   end
 end

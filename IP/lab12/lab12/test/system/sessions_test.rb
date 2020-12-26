@@ -24,7 +24,7 @@ class SessionsTest < ApplicationSystemTestCase
     click_on 'Create User'
 
     assert_text 'User was successfully created.'
-    click_on 'Back'
+    visit login_url
 
     fill_in 'Name', with: login
     fill_in 'Password', with: password
@@ -49,7 +49,7 @@ class SessionsTest < ApplicationSystemTestCase
     fill_in 'Password confirmation', with: password
     click_on 'Create User'
 
-    click_on 'Back'
+    visit login_url
 
     fill_in 'Name', with: login
     fill_in 'Password', with: password
@@ -58,6 +58,6 @@ class SessionsTest < ApplicationSystemTestCase
     assert_text "Logged in as Log Out\nSearch perfect number:"
 
     click_on 'Log Out'
-    assert_text 'Login'
+    assert_text 'Sign Up or Log In'
   end
 end

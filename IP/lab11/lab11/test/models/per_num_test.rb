@@ -17,7 +17,4 @@ class PerNumTest < ActiveSupport::TestCase
   test 'should get 1 data from db' do
     assert PerNum.create_with_output('6 1 2').valid?
   end
-  sql = "Select * from per_nums;"
-  p ActiveRecord::Base.connection.execute(sql)
-  p PerNum.select(arr: "6")
 end

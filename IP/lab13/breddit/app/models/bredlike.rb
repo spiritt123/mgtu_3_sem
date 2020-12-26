@@ -4,7 +4,7 @@ class Bredlike < ApplicationRecord
   
   class << self 
     def create_post(id, name)
-      if where({id_l: id, name: name}).count().zero?
+      if where({:id_l => id, :name => name}).count().zero?
         create(id_l: id, name: name)
       end
     end
